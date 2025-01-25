@@ -1,0 +1,23 @@
+export const flexboxMapping: Record<string, string> = {
+  // Flexbox
+  flex: "display: flex;",
+  "flex-row": "flex-direction: row;",
+  "flex-row-reverse": "flex-direction: row-reverse;",
+  "flex-col": "flex-direction: column;",
+  "flex-col-reverse": "flex-direction: column-reverse;",
+  "flex-wrap": "flex-wrap: wrap;",
+  "flex-nowrap": "flex-wrap: nowrap;",
+  "items-start": "align-items: flex-start;",
+  "items-center": "align-items: center;",
+  "items-end": "align-items: flex-end;",
+  "justify-start": "justify-content: flex-start;",
+  "justify-center": "justify-content: center;",
+  "justify-end": "justify-content: flex-end;",
+  "justify-between": "justify-content: space-between;",
+  "justify-around": "justify-content: space-around;",
+  "justify-evenly": "justify-content: space-evenly;",
+  "self-center": "align-self: center;",
+  "self-start": "align-self: flex-start;",
+  "self-end": "align-self: flex-end;",
+  "self-stretch": "align-self: stretch;",
+} as const;
