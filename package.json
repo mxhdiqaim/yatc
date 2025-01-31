@@ -1,5 +1,5 @@
 {
-  "name": "convert-tailwind-to-css",
+  "name": "yatc",
   "version": "0.1.0",
   "private": true,
   "scripts": {

@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yet Another Tailwind To CSS (Y-A-T-C)
 
-## Getting Started
+Convert Tailwind class to Vanilla CSS (Others styles option on the way).
 
-First, run the development server:
+## Use Case
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This tool helps developers understand the underlying CSS properties of Tailwind utility classes and assists in migrating from Tailwind to vanilla CSS when needed.
+
+## Features
+
+- Convert Tailwind utility classes to vanilla CSS
+- Support for common Tailwind utilities including:
+  - Layout (display, position, etc.)
+  - Flexbox and Grid
+  - Spacing (margin, padding)
+  - Typography
+  - Colors and backgrounds
+  <!-- - Handles arbitrary values (e.g., `[width:200px]`) -->
+- Responsive design utilities (sm:, md:, lg:, etc.)
+- Copy converted CSS with one click
+- Warning system for unsupported or unknown classes
+- Example button to demonstrate usage
+
+## Project Structure
+
+```
+[rootFolder]/
+├── src/
+│   ├── lib/
+│   │   └── tailwind/
+│   │       ├── constants/
+│   │       │   ├── colors.ts
+│   │       │   ├── spacing.ts
+│   │       │   └── mediaQueries.ts
+│   │       ├── types/
+│   │       │   └── index.ts
+│   │       ├── utils/
+│   │       │   ├── parseArbitraryValue.ts
+│   │       │   └── generateUtilities.ts
+│   │       ├── mappings/
+│   │       │   ├── layout.ts
+│   │       │   ├── flexbox.ts
+│   │       │   ├── grid.ts
+│   │       │   ├── spacing.ts
+│   │       │   └── typography.ts
+│   │       └── index.ts
+│   ├── components/
+│   │   └── TailwindConverter/
+│   │       ├── ConversionForm.tsx
+│   │       ├── ConversionResult.tsx
+│   │       └── index.tsx
+│   └── app/
+│       └── converter/
+│           ├── page.tsx
+│           └── layout.tsx
+├── public/
+├── package.json
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application is also available at [here](https://y-a-t-c.vercel.app)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Adding New Utilities
 
-## Learn More
+To add support for new Tailwind utilities:
 
-To learn more about Next.js, take a look at the following resources:
+1. Create or modify the appropriate mapping file in `src/lib/tailwind/mappings/`
+2. Add any necessary constants in `src/lib/tailwind/constants/`
+3. Update the types if needed in `src/lib/tailwind/types/`
+4. Import and include the new mappings in `src/lib/tailwind/index.ts`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Acknowledgments
+
+- Built with Next.js and TypeScript
+- Styled using Tailwind CSS
+- Inspired by the Tailwind CSS documentation
+
+## Disclaimer
+
+Before I start this project, I didn't there is some similar out there. That comes later after I have put all the hard work. So I decided to continue to the project.
