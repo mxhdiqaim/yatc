@@ -43,7 +43,6 @@ export const convertTailwindToCSS = (classes: string): ConvertTailwindToCSSOutpu
     } else {
       // Handle arbitrary values
       const arbitraryMatch = cls.match(REGEX_PARTERN);
-      console.log("arbitraryMatch", arbitraryMatch);
       if (arbitraryMatch) {
         const cssValue = getArbitraryClasses(arbitraryMatch);
 

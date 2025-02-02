@@ -7,5 +7,4 @@ export const layoutMapping: Record<string, string> = {
   inline: "display: inline;",
   "inline-flex": "display: inline-flex;",
   "inline-grid": "display: inline-grid;",
-  flex: "display: flex;",
 } as const;
