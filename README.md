@@ -91,4 +91,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Disclaimer
 
-Before I start this project, I didn't there is some similar out there. That comes later after I have put all the hard work. So I decided to continue to the project.
+Before I start this project, I didn't know there is some similar project out there. That comes later after I have put all the hard work. So I decided to continue to the project.
