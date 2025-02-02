@@ -1,7 +1,10 @@
 import { ConvertTailwindToCSSOutput } from "./types";
 import { generateColorUtilities, generateSpacingUtilities } from "./utils/generate-utilities";
-import { mediaQueries } from "./constants/media-queries";
+import { mediaQueries, responsivePrefixes } from "./constants/media-queries";
 import { tailwindToCSSMap } from "./mapping";
+import { getArbitraryClasses } from "./utils/get-arbitrary-classes";
+
+const REGEX_PARTERN = /^-?([a-z]+(?:-[a-z]+)*)-\[(.*)\]$/;
 
 // Initialize utilities
 generateSpacingUtilities();
@@ -9,27 +12,22 @@ generateColorUtilities();
 
 export const convertTailwindToCSS = (classes: string): ConvertTailwindToCSSOutput => {
   const classArray = classes.trim().split(/\s+/);
-  const unknownClasses: string[] = [];
   const cssRules: string[] = [];
+  const unknownClasses: string[] = [];
 
   classArray.forEach((cls) => {
     // Handle responsive prefixes
-    const responsivePrefixes = ["sm:", "md:", "lg:", "xl:", "2xl:"];
     const hasResponsivePrefix = responsivePrefixes.some((prefix) => cls.startsWith(prefix));
 
     if (hasResponsivePrefix) {
       const [prefix, restOfClass] = cls.split(":");
 
       // Handle arbitrary values in responsive classes
-      const arbitraryMatch = restOfClass.match(/^([a-z-]+)\[(.*)\]$/);
-      console.log("arbitraryMatch", arbitraryMatch);
+      const arbitraryMatch = restOfClass.match(REGEX_PARTERN);
       if (arbitraryMatch) {
-        const [, property, value] = arbitraryMatch;
-        if (typeof tailwindToCSSMap[property] === "function") {
-          const cssValue = tailwindToCSSMap[property](value);
-          cssRules.push(`${mediaQueries[prefix]} { ${cssValue} }`);
-          return;
-        }
+        const cssValue = getArbitraryClasses(arbitraryMatch);
+        cssRules.push(`${mediaQueries[prefix]} { ${cssValue} }`);
+        return;
       }
 
       // Handle regular responsive classes
@@ -44,11 +42,14 @@ export const convertTailwindToCSS = (classes: string): ConvertTailwindToCSSOutpu
       }
     } else {
       // Handle arbitrary values
-      const arbitraryMatch = cls.match(/^([a-z-]+)\[(.*)\]$/);
+      const arbitraryMatch = cls.match(REGEX_PARTERN);
+      console.log("arbitraryMatch", arbitraryMatch);
       if (arbitraryMatch) {
-        const [, property, value] = arbitraryMatch;
-        if (typeof tailwindToCSSMap[property] === "function") {
-          cssRules.push(tailwindToCSSMap[property](value));
+        const cssValue = getArbitraryClasses(arbitraryMatch);
+
+        if (cssValue) {
+          cssRules.push(cssValue);
+
           return;
         }
       }

@@ -191,6 +191,9 @@ export const gridMapping: Record<string, string> = {
   "row-span-full": "grid-row: 1 / -1;",
   "grid-cols-none": "grid-template-columns: none;",
   "grid-rows-none": "grid-template-rows: none;",
+  "grid-rows-subgrid": "grid-template-rows: subgrid;",
+
+  "grid-cols-subgrid": "grid-template-columns: subgrid",
   "grid-cols-1fr": "grid-template-columns: 1fr;",
   "grid-cols-2fr": "grid-template-columns: 2fr;",
   "grid-cols-3fr": "grid-template-columns: 3fr;",

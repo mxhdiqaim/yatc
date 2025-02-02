@@ -5,3 +5,5 @@ export const mediaQueries: Record<string, string> = {
   xl: "@media (min-width: 1280px)",
   "2xl": "@media (min-width: 1536px)",
 };
+
+export const responsivePrefixes: string[] = ["sm:", "md:", "lg:", "xl:", "2xl:"];
